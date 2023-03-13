@@ -1,0 +1,15 @@
+{% extends 'login/base.html' %}
+
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+<h1>Add User</h1>
+<form method="POST" action="{% url 'login:add' %}" 
+    enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ userForm.as_p }}
+
+    <button class="button" type="submit">Save New User</button>
+    <button onclick="window.location.href='../..';">Back to Login Page</button>
+</form>
+{% endblock %}
