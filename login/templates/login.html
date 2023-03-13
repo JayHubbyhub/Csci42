@@ -10,14 +10,14 @@
     {% csrf_token %}
     <div class="form-group">
       <label for="id_num">ID Number:</label>
-      <input type="number" name="id_num" class="form-control" required>
+      <input placeholder="ID Number:" type="number" name="id_num" class="form-control" required>
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" name="password" class="form-control" required>
+      <input placeholder="Password:" type="password" name="password" class="form-control" required>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
-    {{error_message}}
+    <span>{{error_message}}</span>
   </form>
 
 

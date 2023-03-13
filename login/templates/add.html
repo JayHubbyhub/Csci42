@@ -7,9 +7,18 @@
 <form method="POST" action="{% url 'login:add' %}" 
     enctype="multipart/form-data">
     {% csrf_token %}
-    {{ userForm.as_p }}
+    {% for field in userForm %}
+    <div class="form-field">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+    </div>
+{% endfor %}
 
     <button class="button" type="submit">Save New User</button>
     <button onclick="window.location.href='../..';">Back to Login Page</button>
 </form>
 {% endblock %}
+
