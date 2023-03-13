@@ -23,7 +23,7 @@ def login(request): # sign in
         try:
             user = User.objects.get(id_num=id_num)
             if password == user.password:
-                return render(request, 'homepage.html')
+                return redirect("login:homepage")
             return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
         except User.DoesNotExist:
             return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
