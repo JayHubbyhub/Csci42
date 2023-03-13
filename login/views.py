@@ -1,19 +1,34 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from .models import User
 from .forms import UserForm
-from django.views.generic.list import ListView
 
 # Create your views here.
-class IndexView(ListView):
-    queryset = User.objects.order_by("last_name")
 
-def add(request):
+def add(request): # signup
     if request.method == "POST":
         userForm = UserForm(request.POST, request.FILES)
         if userForm.is_valid():
             new_user = userForm.save()
-            return redirect("login:index")
+            return redirect("login:login")
     else:
         userForm = UserForm()
-        return render(request, "login/add.html", 
+        return render(request, "add.html", 
             {"userForm": userForm})
+
+def login(request): # sign in
+    if request.method == "POST":
+        id_num = request.POST.get('id_num')
+        password = request.POST.get('password')
+        try:
+            user = User.objects.get(id_num=id_num)
+            if password == user.password:
+                return render(request, 'homepage.html')
+            return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
+        except User.DoesNotExist:
+            return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
+    else:
+        return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
+
+def homepage(request):
+    return render(request, "homepage.html")
