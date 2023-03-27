@@ -28,7 +28,7 @@ def login(request): # sign in
         except User.DoesNotExist:
             return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
     else:
-        return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
+        return render(request, 'login.html')
 
 def homepage(request):
     return render(request, "homepage.html")

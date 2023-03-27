@@ -22,5 +22,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('login/', include('login.urls', namespace="login")),
     path('admin/', admin.site.urls),
-    path('items/', include('items.urls', namespace='items'))
+    path('items/', include('items.urls', namespace='items')),
+    path('verification/', include('verification.urls', namespace='verification')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
