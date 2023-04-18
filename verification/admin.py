@@ -4,6 +4,6 @@ from .models import Verification
 # Register your models here.
 class VerificationAdmin(admin.ModelAdmin):
     model = Verification
-    list_display = ("id_num", "category", "submissionDate", "form")
+    list_display = ("username", "category", "submissionDate", "form")
 
 admin.site.register(Verification, VerificationAdmin)

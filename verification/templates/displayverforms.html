@@ -1,14 +1,36 @@
 {% extends "base.html" %}
+
 {% block title %}List of Submitted Verification Forms{% endblock %}
 {% block content %}
-  <center><h1>List of Submitted Verification Forms</h1></center>
+{% if user.is_staff %}
+  <center><h1>List of all User Submitted Verification Forms</h1></center>
   {% for vform in all_verforms %}
     {% if vform.isChecked == False %}
+    <h3>
     <b>{{vform.id}}</b> | {{vform.category}}<br>
-    {{vform.id_num}}
+    {{vform.id_num}}</h3>
+    <li><b>Submitted by: </b>{{vform.username}}</li>
     <li><b>Submitted on: </b>{{vform.submissionDate}}</li>
     <b></b><a href="/media/{{vform.form}}">Verification Form</a>
     <br><br>
     {% endif %}
   {% endfor %}
+  <button onclick="window.location.href='../../';">Back to Homepage</button>
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <h1>List of your Submitted Verification Forms</h1>
+  {% for vform in all_verforms %}
+    {% if vform.username == request.user.username %}
+      <b>{{vform.id}}</b> | {{vform.category}}<br>
+      {{vform.id_num}}</h3>
+      <li><b>Submitted by: </b>{{vform.username}}</li>
+      <li><b>Submitted on: </b>{{vform.submissionDate}}</li>
+      <b></b><a href="/media/{{vform.form}}">Verification Form</a>
+      <br><br>
+      {% endif %}
+  {% endfor %}
+  <a href="{% url 'home' %}">Back to homepage</a>
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% endif %}
 {% endblock %}
+

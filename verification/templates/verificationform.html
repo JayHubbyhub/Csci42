@@ -6,12 +6,29 @@
     <h1>Welcome to Lost & Bound!</h1>
 
     <h2><b>Verification Form</b></h2>
+    <a href='//docs.google.com/document/d/1uhX1RKEUKBY5bcqR-zAs_Zt44-ajDsMjR63tl77x7Lw/edit?usp=sharing'; target="_blank"><button>Form Template</button></a>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Upload</button>
     </form>
+    {% comment %} <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="username">Username:</label>
+            {{ form.username }}
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" placeholder="Enter item category" />
+        </div>
+        <div>
+            <label for="form">Form:</label>
+            <input type="file" id="form" name="form" />
+        </div>
+        <button type="submit">Upload</button>
+    </form> {% endcomment %}
     {{message}}
-    <a href='//docs.google.com/document/d/1uhX1RKEUKBY5bcqR-zAs_Zt44-ajDsMjR63tl77x7Lw/edit?usp=sharing'; target="_blank"><button>Form Template</button></a>
-    <button onclick="window.location.href='../../login/homepage/';">Back to Homepage</button>
+    <button onclick="window.location.href='../../';">Back to Homepage</button>
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% endblock %}

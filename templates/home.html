@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Lost and Bound homepage</h1>
+    <button onclick="window.location.href='../../items/lostitems/';">View Lost Items</button>
+    <button onclick="window.location.href='../../verification/';">Submit a Verification Form</button>
+    <button onclick="window.location.href='../../verification/display/';">View Verification Forms</button>
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% endblock %}
