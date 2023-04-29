@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <center><h1>Inventory of Found Items</h1></center>
+  {% for found in all_found_items %}
+    {% if found.isLost == False %}
+    <h3><b>{{found.id}}</b> | {{found.category}}<br>
+    {{found.description}}</h3>
+    <li><b>Location found: </b>{{found.locationFound}}</li>
+    <li><b>Date found: </b>{{found.dateFound}}</li>
+    <li><b>Time found: </b>{{found.timeFound}}</li>
+    {% if found.lost_item_image %}
+      <li><b>Item Picture:</b></li>
+      <img src="{{ found.lost_item_image.url }}">
+    {% endif %}
+    <br>
+    {% endif %}
+  {% endfor %}
+  <button onclick="window.location.href='../../';">Back to Homepage</button>
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  {% endblock %}

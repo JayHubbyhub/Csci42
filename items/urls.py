@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path("lostitems/", views.lostItems.as_view(), name="lostItems"),
+    path("founditems/", views.foundItems.as_view(), name="foundItems"),
     path("newLostItem/", views.newLostItem, name="newLostItem")
 ]
 

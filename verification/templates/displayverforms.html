@@ -12,6 +12,25 @@
     <li><b>Submitted by: </b>{{vform.username}}</li>
     <li><b>Submitted on: </b>{{vform.submissionDate}}</li>
     <b></b><a href="/media/{{vform.form}}">Verification Form</a>
+
+    <div class="button-container">
+      <form method="POST" action="{% url 'verification:updateStatus' vform.pk 'Accepted' %}">
+        {% csrf_token %}
+        <button type="submit">Accept</button>
+      </form>
+    
+      <form method="POST" action="{% url 'verification:updateStatus' vform.pk 'Rejected' %}">
+        {% csrf_token %}
+        <button type="submit">Reject</button>
+      </form>
+    </div>
+    
+    <style>
+      .button-container form {
+        display: inline-block;
+      }
+    </style>
+
     <br><br>
     {% endif %}
   {% endfor %}

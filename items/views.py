@@ -17,6 +17,16 @@ class lostItems(View):
         
         return render(request, "items/lostitems.html", context)
     
+class foundItems(View):
+    template = "founditems.html"
+    def get(self, request):
+        all_found_items = Item.objects.filter(isLost=False)
+        context = {
+            "all_found_items": all_found_items
+        }
+        
+        return render(request, "items/founditems.html", context)
+    
 def newLostItem(request):
     if request.method == "POST":
         lost_item_form = ItemForm(request.POST, request.FILES)

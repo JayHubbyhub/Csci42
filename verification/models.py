@@ -11,6 +11,7 @@ class Verification(models.Model):
     form = models.FileField(upload_to='files/')
 
     isChecked = models.BooleanField(default=False)
+    status = models.CharField(max_length=20, default="Pending")
 
     submissionDate = models.DateTimeField(default=datetime.datetime.now())
 
