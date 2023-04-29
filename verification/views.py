@@ -30,7 +30,7 @@ def updateStatus(request, pk, new_status):
     obj = get_object_or_404(Verification, pk=pk)
     # update the status field
     obj.status = new_status
-    obj.isChecked = True;
+    obj.isChecked = False;
     obj.save()
     # render a response
     return redirect('verification:displayverforms')

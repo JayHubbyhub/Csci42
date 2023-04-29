@@ -12,6 +12,7 @@
     <li><b>Submitted by: </b>{{vform.username}}</li>
     <li><b>Submitted on: </b>{{vform.submissionDate}}</li>
     <b></b><a href="/media/{{vform.form}}">Verification Form</a>
+    <li><b>Status: </b>{{vform.status}}</li>
 
     <div class="button-container">
       <form method="POST" action="{% url 'verification:updateStatus' vform.pk 'Accepted' %}">
@@ -45,6 +46,7 @@
       <li><b>Submitted by: </b>{{vform.username}}</li>
       <li><b>Submitted on: </b>{{vform.submissionDate}}</li>
       <b></b><a href="/media/{{vform.form}}">Verification Form</a>
+      <li><b>Status: </b>{{vform.status}}</li>
       <br><br>
       {% endif %}
   {% endfor %}
